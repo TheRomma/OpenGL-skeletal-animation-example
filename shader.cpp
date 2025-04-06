@@ -113,7 +113,7 @@ uint32_t albedoShader(){
 		} F;
 
 		layout(binding = 0) uniform sampler2DArray u_color;
-		layout(binding = 1) uniform sampler2DArray u_PBR;
+		//layout(binding = 1) uniform sampler2DArray u_PBR;
 
 		vec3 calcColor(){
 			vec3 albedo = texture(u_color, F.uv_coord).rgb;
