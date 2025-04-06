@@ -3,7 +3,7 @@ This is a course project for a university computer graphics course showing skele
 
 ## How to build
 ```
-cd stereo-image-depth-estimator
+cd OpenGL-skeletal-animation-example
 make
 ./executable
 ```
