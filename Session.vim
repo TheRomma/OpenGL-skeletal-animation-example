@@ -315,7 +315,7 @@ if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
 10
-normal! 023|
+normal! 0
 wincmd w
 exe 'vert 1resize ' . ((&columns * 67 + 101) / 203)
 exe 'vert 2resize ' . ((&columns * 135 + 101) / 203)
@@ -589,13 +589,14 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 94 - ((33 * winheight(0) + 26) / 52)
+let s:l = 109 - ((39 * winheight(0) + 26) / 52)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-94
-normal! 077|
+109
+normal! 047|
 wincmd w
+2wincmd w
 exe 'vert 1resize ' . ((&columns * 56 + 101) / 203)
 exe 'vert 2resize ' . ((&columns * 146 + 101) / 203)
 tabnext
@@ -868,12 +869,12 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 52 - ((21 * winheight(0) + 26) / 52)
+let s:l = 62 - ((22 * winheight(0) + 26) / 52)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-52
-normal! 031|
+62
+normal! 052|
 wincmd w
 exe 'vert 1resize ' . ((&columns * 60 + 101) / 203)
 exe 'vert 2resize ' . ((&columns * 142 + 101) / 203)
@@ -1021,7 +1022,7 @@ if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
 13
-normal! 015|
+normal! 0
 wincmd w
 argglobal
 if bufexists("shader.cpp") | buffer shader.cpp | else | edit shader.cpp | endif
@@ -1147,11 +1148,11 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 106 - ((15 * winheight(0) + 26) / 52)
+let s:l = 140 - ((38 * winheight(0) + 26) / 52)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-106
+140
 normal! 040|
 wincmd w
 exe 'vert 1resize ' . ((&columns * 66 + 101) / 203)
@@ -2263,7 +2264,7 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 59 - ((30 * winheight(0) + 26) / 52)
+let s:l = 59 - ((39 * winheight(0) + 26) / 52)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -2272,7 +2273,7 @@ normal! 048|
 wincmd w
 exe 'vert 1resize ' . ((&columns * 60 + 101) / 203)
 exe 'vert 2resize ' . ((&columns * 142 + 101) / 203)
-tabnext 8
+tabnext 2
 set stal=1
 badd +19 makefile
 badd +13 scene.hpp
@@ -2281,7 +2282,7 @@ badd +10 shader.hpp
 badd +26 3Dmath.hpp
 badd +16 model.hpp
 badd +14 camera.hpp
-badd +20 animation.hpp
+badd +1 animation.hpp
 badd +1 main.cpp
 badd +1 scene.cpp
 badd +1 renderer.cpp

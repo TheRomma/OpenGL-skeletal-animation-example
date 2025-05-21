@@ -67,7 +67,8 @@ uint32_t testScene(Renderer* renderer){
 					break;
 				
 				case SDL_MOUSEMOTION:
-					camera.updateDirection(event.motion.xrel, event.motion.yrel);
+					if(mouseLocked)
+						camera.updateDirection(event.motion.xrel, event.motion.yrel);
 					break;
 			}
 		}
@@ -88,10 +89,32 @@ uint32_t testScene(Renderer* renderer){
 		Mat4 projView = camera.calcProjView(renderer->calcAspect());
 		glUniformMatrix4fv(0, 1, false, &projView.mat[0][0]);
 
-		anim.calcPose((float)frameCount * 0.01f, joints);
-		glUniformMatrix4fv(2, anim.header.numJoints, false, &joints[0].mat[0][0]);
+		glUniform3fv(2, 1, &camera.position.x);
 
-		model.draw(Mat4::rotate({{0.0f, 0.0f, 1.0f}, (float)frameCount * 0.01f}));
+		anim.calcPose((float)frameCount * 0.015f, joints);
+		glUniformMatrix4fv(3, anim.header.numJoints, false, &joints[0].mat[0][0]);
+		Mat4 transform_1 = Mat4::rotate({{0.0f, 0.0f, 1.0f}, (float)frameCount * 0.01f});
+		model.draw(transform_1);
+
+		anim.calcPose((float)frameCount * 0.02f, joints);
+		glUniformMatrix4fv(3, anim.header.numJoints, false, &joints[0].mat[0][0]);
+		Mat4 transform_2 = (
+			transform_1 *
+			Mat4::translate({5.0f, 0.0f, 0.0f}) *
+			Mat4::rotate({{0.0f, 0.0f, -1.0f}, (float)frameCount * 0.02f}) *
+			Mat4::scale({0.5f, 0.5f, 0.5f})
+		);
+		model.draw(transform_2);
+
+		anim.calcPose((float)frameCount * 0.025f, joints);
+		glUniformMatrix4fv(3, anim.header.numJoints, false, &joints[0].mat[0][0]);
+		Mat4 transform_3 = (
+			transform_2 * 
+			Mat4::translate({5.0f, 0.0f, 0.0f}) *
+			Mat4::rotate({{0.0f, 0.0f, 1.0f}, (float)frameCount * 0.04f}) *
+			Mat4::scale({0.5f, 0.5f, 0.5f})
+		);
+		model.draw(transform_3);
 
 		renderer->endFrame();
 

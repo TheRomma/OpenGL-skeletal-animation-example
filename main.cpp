@@ -3,6 +3,7 @@
 #include <cstdio>
 
 #include "scene.hpp"
+#include "3Dmath.hpp"
 
 int main(int argc, char** argv){
 	Renderer renderer(1280, 720);
